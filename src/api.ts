@@ -7,6 +7,7 @@ async function get<T>(url: string, signal?: AbortSignal): Promise<T> {
   if (!res.ok) throw new Error(`La API respondió con error ${res.status}`);
   return res.json() as Promise<T>;
 }
+//Toca usar un fetch por cada Pokémon, porque la API no tiene un endpoint pq no hay filtro
 
 // Fetch 1: lista (generaciones I a III = 386 Pokémon)
 export async function getPokemonList(
