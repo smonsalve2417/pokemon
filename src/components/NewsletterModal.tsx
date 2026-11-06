@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { Notify } from "../types";
 
-/* Dark Pattern */
 export default function NewsletterModal({
   onDone,
   onNotify,
@@ -24,10 +23,6 @@ export default function NewsletterModal({
   return (
     <dialog
       ref={ref}
-      onCancel={(e) => {
-        e.preventDefault();
-        console.log("Se bloqueó Escape");
-      }} // bloquea Esc para que tenga q darle varis veces
       aria-labelledby="nl-title"
       className="m-auto w-full max-w-sm rounded-xl p-6 text-center backdrop:bg-black/70 dark:bg-slate-800 dark:text-white"
     >
@@ -47,6 +42,8 @@ export default function NewsletterModal({
       >
         ¡Sí, quiero suscribirme!
       </button>
+      {/* Dark Pattern, muy pequeno y sin color para que automaticamente le den
+      que si */}
       <button
         type="button"
         onClick={close}
