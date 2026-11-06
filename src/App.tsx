@@ -34,12 +34,14 @@ function loadFavorites(): PokemonSummary[] {
     }
     return parsed;
   } catch (error) {
-    console.error("No se pudieron cargar los favoritos del almacenamiento local.", error);
+    console.error(
+      "No se pudieron cargar los favoritos del almacenamiento local.",
+      error,
+    );
     return [];
   }
 }
 
-// App está por encima de <Routes>: su estado NO se pierde al cambiar de ruta.
 export default function App() {
   const [favorites, setFavorites] = useState<PokemonSummary[]>(loadFavorites);
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -51,7 +53,10 @@ export default function App() {
         JSON.stringify(favorites),
       );
     } catch (error) {
-      console.error("No se pudieron guardar los favoritos en el almacenamiento local.", error);
+      console.error(
+        "No se pudieron guardar los favoritos en el almacenamiento local.",
+        error,
+      );
     }
   }, [favorites]);
 
@@ -61,7 +66,7 @@ export default function App() {
   const notify: Notify = (type, message) => {
     const id = Date.now() + Math.random();
     setToasts((t) => [...t, { id, type, message }]);
-    setTimeout(() => dismiss(id), 3000); // auto-dismiss
+    setTimeout(() => dismiss(id), 3000);
   };
 
   const onAdd = (p: PokemonSummary) => {
